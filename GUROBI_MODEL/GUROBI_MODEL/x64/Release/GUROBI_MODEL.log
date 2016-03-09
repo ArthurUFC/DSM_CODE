@@ -1,0 +1,18 @@
+﻿已經開始建置於 2016/3/7 上午 01:37:40。
+     1>節點 2 (Build 目標) 上的專案 "C:\Users\choiufong\Documents\Visual Studio 2013\Projects\GUROBI_MODEL\GUROBI_MODEL\GUROBI_MODEL.vcxproj"。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\gurobi650\win64\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Source.cpp
+         Source.cpp
+     1>Source.cpp(10): warning C4244: '引數' : 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+     1>Source.cpp(11): warning C4305: '正在初始化' : 從 '__int64' 轉換為 'const int'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+     1>Source.cpp(11): warning C4309: '正在初始化' : 轉換導致常數值遭截斷; 可能需要使用較大的類型
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\choiufong\Documents\Visual Studio 2013\Projects\GUROBI_MODEL\x64\Release\GUROBI_MODEL.exe" /INCREMENTAL:NO /NOLOGO C:\gurobi650\win64\lib\gurobi_c++md2013.lib C:\gurobi650\win64\lib\gurobi65.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\choiufong\Documents\Visual Studio 2013\Projects\GUROBI_MODEL\x64\Release\GUROBI_MODEL.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\choiufong\Documents\Visual Studio 2013\Projects\GUROBI_MODEL\x64\Release\GUROBI_MODEL.lib" /MACHINE:X64 x64\Release\Source.obj
+         正在產生程式碼
+         已完成程式碼產生
+         GUROBI_MODEL.vcxproj -> C:\Users\choiufong\Documents\Visual Studio 2013\Projects\GUROBI_MODEL\x64\Release\GUROBI_MODEL.exe
+     1>專案 "C:\Users\choiufong\Documents\Visual Studio 2013\Projects\GUROBI_MODEL\GUROBI_MODEL\GUROBI_MODEL.vcxproj" (Build 目標) 建置完成。
+
+建置成功。
+
+經過時間 00:00:03.73
