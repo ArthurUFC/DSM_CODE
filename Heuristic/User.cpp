@@ -14,8 +14,8 @@ User::User()
     this->price = new double[ntimeSlot];
 	earliestSlot.resize(nUsers);  //The earliest time slot the job can start
 	deadLine.resize(nUsers);  //the latest time slot the job have to be done.
-	startSlot.resize(nUsers);
-	jobLength.resize(nUsers);
+	startSlot.resize(nUsers); 
+	jobLength.resize(nUsers); //the duration of jobs
 	jobPower.resize(nUsers);  //The power consumption of job.
 	isScheduled.resize(nUsers);  // Check whether the job scheduled or not
     isWorking.resize(nUsers);
