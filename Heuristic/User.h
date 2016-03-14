@@ -10,14 +10,14 @@ public:
     User();
     ~User();
     User(int x, int y , int z);
-	void scheduleJob();
-	void computeCost();
-	double *computeTotalDemand(vector<vector<vector<bool> > > &isWorking);
-	double *getPrice();
-	double *computePrice(double *totalDemand);
-	void adjustSchedule();
-	void copySchedule(vector<vector<vector<bool> > > &isWorkingTemp);
-	double computejobCost(double *price, vector<vector<vector<bool> > > &isWorkingArg,
+    void scheduleJob();
+    void computeCost();
+    double *computeTotalDemand(vector<vector<vector<bool> > > &isWorking);
+    double *getPrice();
+    double *computePrice(double *totalDemand);
+    void adjustSchedule();
+    void copySchedule(vector<vector<vector<bool> > > &isWorkingTemp);
+    double computejobCost(double *price, vector<vector<vector<bool> > > &isWorkingArg,
                             vector<vector<double> >jobPower, int userIndex, int jobIndex);
     void UpdateSchedule();
     void PrintSchedule();
