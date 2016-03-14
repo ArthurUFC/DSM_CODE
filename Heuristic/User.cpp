@@ -2,15 +2,14 @@
 #include <ctime>
 #include <cstdlib>
 #include "User.h"
-/**
-*Initialize the simulated data
-**/
 
+
+//Initializes the simulation data
 User::User()
 {
     srand (time(NULL));
     this->nUsers = rand() % 2 + 500;    //# of users
-	this->batteryCapacity = 10;
+    this->batteryCapacity = 10;
     this->nJob = new int[nUsers];
     this->price = new double[ntimeSlot];
 	earliestSlot.resize(nUsers);  //The earliest time slot the job can start
@@ -27,45 +26,37 @@ User::User()
         nJob[i] = rand()% 10 + 1;
         isWorking[i].resize(nJob[i]);
         for(int j = 0; j < nJob[i]; j++) {
-            //this->earliestSlot[i].push_back(rand() % 3);
-            //this->deadLine[i].push_back(rand() % 3 + 21);
             this->earliestSlot[i].push_back(0);
             this->deadLine[i].push_back(23);
             this->jobLength[i].push_back(rand() % 5 + 6);
             this->jobPower[i].push_back((double)(rand() % 100 + 1) / 10);
             this->isScheduled[i].push_back(false);
-            //this->startSlot[i].push_back(rand() % (deadLine[i][j] - jobLength[i][j] + 1 - earliestSlot[i][j] + 1) + earliestSlot[i][j]);
             this->startSlot[i].push_back(0);
             for(int k = 0; k < ntimeSlot; k++) {
                 if(k >= startSlot[i][j] && k < (startSlot[i][j] + jobLength[i][j]))
                     this->isWorking[i][j].push_back(true);
                 else
                     this->isWorking[i][j].push_back(false);
-                //cout<<isWorking[i][j][k]<<" ";// print the initial working schedule
             }
-            //cout<<endl;
-            //cout<<earliestSlot[i][j]<<" "<<deadLine[i][j]<<" "<<jobLength[i][j]<<" "<<jobPower[i][j]<<" "<<isScheduled[i][j]<<endl;
-            //print all jobs's information
         }
     }
 }
+
 User::~User(){
     delete [] nJob;
     delete [] price;
 }
+
 double *User::computeTotalDemand(vector<vector<vector<bool> > > &isWorkingArg) {
     double *totalDemandPtr = new double [ntimeSlot];
     for(int k = 0; k < ntimeSlot; k++){
     *(totalDemandPtr+k) = 0;
         for(int i = 0; i < nUsers; i++){
             for(int j = 0; j < nJob[i]; j++){
-            //if (isWorking[i][j][k] == 1)
                 *(totalDemandPtr+k) += jobPower[i][j] * (double)isWorkingArg[i][j][k];
             }
         }
-    //cout<<"T : "<<k<<" : "<<*(totalDemandPtr + k)<<" ";
     }
-    //cout<<endl;
     return totalDemandPtr;
 }
 
@@ -77,9 +68,11 @@ double *User::computePrice(double *totalDemand) {
     }
     return price;
 }
+
 double *User::getPrice() {
     return price;
 }
+
 void User::copySchedule(vector<vector<vector<bool> > > &isWorkingTemp) {
     for(int i = 0; i < nUsers; i++){
         for(int j =0; j < nJob[i]; j++){
@@ -130,11 +123,11 @@ void User::PrintTotalDemand(){
     }
 }
 void User::adjustSchedule() {
+    double minJobCost = 0;
+    double tempJobCost = 0;//To store the temporary job cost
     double *totalTempDemand = NULL;//To store the temporary total energy demand
     double totalReverseTempDemand[ntimeSlot] = {0};//To store the temporary total energy demand
     double totalMinDemand[ntimeSlot] = {0};
-    double minJobCost = 0;
-    double tempJobCost = 0;//To store the temporary job cost
     totalTempDemand = computeTotalDemand(isWorking);
     cout<<"Start:"<<endl;
     for (int i = 0; i < ntimeSlot; i++){
@@ -167,7 +160,7 @@ void User::adjustSchedule() {
                 totalReverseTempDemand[newStartSlot + jobLength[i][j]] -= jobPower[i][j];
                 totalReverseTempDemand[newStartSlot] += jobPower[i][j];
                 for(int l = newStartSlot; l < newStartSlot + jobLength[i][j]; l++){
-                    tempJobCost += (5 * totalReverseTempDemand[l] * jobPower[i][j]);
+                    tempJobCost += (5 * totalReverseTempDemand[l] * jobPower[i][j]); // Price =  5 * Total Demand  
                 }
                 if(tempJobCost < minJobCost) {
                     minJobCost = tempJobCost;
