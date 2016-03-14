@@ -11,8 +11,6 @@ public:
     ~User();
     User(int x, int y , int z);
 	void scheduleJob();
-	//void compareCost();
-	//void testFun(vector< vector<int> > &a);
 	void computeCost();
 	double *computeTotalDemand(vector<vector<vector<bool> > > &isWorking);
 	double *getPrice();
