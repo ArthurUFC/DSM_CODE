@@ -5,20 +5,12 @@ using namespace std;
 
 int main()
 {
-  //  vector<vector<int> > aabb;
-  // Scheduler b;
-   User data;
 
+   User users;
    for(int i = 0; i < 50; i++) {
-        data.adjustSchedule();
+        users.adjustSchedule();
    }
-   //data.PrintSchedule();
-   data.PrintTotalDemand();
-   // double ddg[24] ={0};
-    //for(int i =0; i < 24; i++)
-      //  cout<<ddg[i];
-   //dd.testFun();
-   //cout<<b.get();
-   //User *a = new User[2];
+   users.PrintSchedule();
+   users.PrintTotalDemand();
     return 0;
 };
