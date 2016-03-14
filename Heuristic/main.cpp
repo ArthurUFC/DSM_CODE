@@ -1,6 +1,5 @@
 #include <iostream>
 #include "User.h"
-#include "Scheduler.h"
 using namespace std;
 
 int main()
